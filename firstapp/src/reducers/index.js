@@ -1,27 +1,28 @@
 const reducer = (state = {
-  say: 'Hey I am first',
+  message: 'Hey I am the Initial State',
   counter: 0
 }, action) => {
 
   switch (action.type) {
     case 'HELLO_REACT':
       return { ...state,
-        say: 'Hello World Redux'
+        message: 'Hello am the changed state',
       };
-    case 'INCREMENT_COUNT':
-      let x = { ...state
-      };
-      console.log(x);
-      return { ...state,
+    case 'INCREMENT_COUNTER':
+      return {
+        ...state,
         counter: state.counter + 1
       };
-    case 'DECREMENT_COUNT':
-      let y = { ...state
-      };
-      console.log(y);
-      return { ...state,
-        counter: state.counter - 1
-      };
+    case 'DECREMENT_COUNTER':
+      if (state.counter >0) {
+        return {
+          ...state,
+          counter: state.counter - 1
+        };
+      }
+      else{
+       return state;
+      }
     default:
       return state;
   }

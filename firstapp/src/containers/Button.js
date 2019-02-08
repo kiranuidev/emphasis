@@ -1,32 +1,28 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { sayHello } from '../actions'
-import { increment } from '../actions/increment'
-
-let Button = ({ whatsUp, stateObject, saySomething,incrementCount }) => (
+import { sayHello,decrementCount,incrementCount } from '../actions'
+let Button = ({stateObject, saySomething,increment,decrement}) => (
 
   <div >
-    <button onClick={saySomething}>PRESS TO DISPATCH FIRST ACTION</button>
-    <h2>Counter: {stateObject.counter}</h2>
-    <button onClick={() => console.log('Redux State:',stateObject)} >Press to inspect STATE in console panel</button>
-  <button onClick ={incrementCount}>INCREMENT COUNT</button>
-  
-  
-  
+    <button onClick={saySomething}>Click To Fetch the new State</button>
+    <h1>{stateObject.message}</h1>
+    <p>
+      <button onClick={increment}>+</button>
+      &nbsp;<span>{stateObject.counter}</span>&nbsp;
+    <button onClick={decrement}>-</button>
+    </p>
   </div>
 
 )
-
+//To Map the data to and From the store
 const mapStateToProps = (state) => ({
-  whatsUp: state.say,
-
   stateObject: state
 })
-
+//Event triggers
 const mapDispatchToProps = (dispatch) => ({
   saySomething: () => { dispatch(sayHello())},
-  incrementCount:() =>{dispatch(increment())}
-  
+  increment:()=>{dispatch(incrementCount())},
+  decrement:()=>{dispatch(decrementCount())},
 })
 
 Button = connect(

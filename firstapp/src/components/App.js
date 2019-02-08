@@ -1,13 +1,11 @@
 import React from 'react'
-import Button from '../containers/Button'
-import DecrementButton from '../containers/decrement';
-
+import Button from '../containers/Button';
+import Cart from '../containers/Cart'
 let App = () => (
   <div >
+    <Cart/>
     <Button />
-    <DecrementButton />
   </div>
-
 )
 
 export default App;
